@@ -1,0 +1,12 @@
+#ifndef BUSINESS_LOGIC_GLOBAL_H
+#define BUSINESS_LOGIC_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(BUSINESS_LOGIC_LIBRARY)
+#define BUSINESS_LOGIC_EXPORT Q_DECL_EXPORT
+#else
+#define BUSINESS_LOGIC_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // BUSINESS_LOGIC_GLOBAL_H

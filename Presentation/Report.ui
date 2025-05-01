@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Report</class>
+ <widget class="QWidget" name="Report">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>510</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>480</width>
+     <height>510</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page_Report">
+    <property name="styleSheet">
+     <string notr="true">#page_Report{
+	border-image: url(:/PNG/Report01.png);
+}</string>
+    </property>
+    <widget class="QPushButton" name="product_btn">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>150</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#product_btn{
+	border-image: url(:/PNG/PNG/btn_product.png);
+	color: rgb(230, 230, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string>Click Here</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="from_btn">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>95</y>
+       <width>251</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#from_btn{
+	border-image: url(:/PNG/PNG/btn.png);
+	color: rgb(230, 230, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string>Click Here</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="to_btn">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>164</y>
+       <width>251</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#to_btn{
+	border-image: url(:/PNG/PNG/btn.png);
+	color: rgb(230, 230, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string>Click Here</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Done_btn">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>250</y>
+       <width>160</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Done_btn{
+	border-image: url(:/PNG/btn_done.png);
+	color: rgb(230, 230, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Cancel_btn">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>250</y>
+       <width>160</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Cancel_btn{
+	border-image: url(:/PNG/btn_cancel.png);
+	color: rgb(230, 230, 230);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="email_address_lbl">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>330</y>
+       <width>421</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#email_address_lbl
+{
+color: rgb(0, 0, 0);
+	border-image: url(:/PNG/Email_Label.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="email_address_lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>370</y>
+       <width>381</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#email_address_lineEdit{
+	
+	background-color: rgba(255, 255, 255,0%);
+}</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="send_report_btn">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>440</y>
+       <width>233</width>
+       <height>48</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#send_report_btn{
+	border-image: url(:/PNG/Re_send.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Product_label">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>150</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Satoshi Variable</family>
+       <pointsize>18</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="From_label">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>95</y>
+       <width>251</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="To_label">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>165</y>
+       <width>251</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_From">
+    <property name="styleSheet">
+     <string notr="true">#page_From{
+	border-image: url(:/PNG/From.png);
+}</string>
+    </property>
+    <widget class="QPushButton" name="Form_oK_btn">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>230</y>
+       <width>75</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Form_oK_btn{
+	border-image: url(:/PNG/Form_ok.png);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Year_spinBox">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>88</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Year_spinBox {
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Year_spinBox::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Year_spinBox::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Year_spinBox::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Year_spinBox::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string/>
+     </property>
+     <property name="minimum">
+      <number>1402</number>
+     </property>
+     <property name="maximum">
+      <number>1440</number>
+     </property>
+     <property name="value">
+      <number>1402</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Month_spinBox">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>158</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Month_spinBox {
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Month_spinBox::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Month_spinBox::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Month_spinBox::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Month_spinBox::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>12</number>
+     </property>
+     <property name="stepType">
+      <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Day_spinBox">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>224</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Day_spinBox{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+format:&quot;%02.0f&quot;;
+ }
+
+#Day_spinBox::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Day_spinBox::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Day_spinBox::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Day_spinBox::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>31</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+     <property name="displayIntegerBase">
+      <number>10</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Hour_spinBox">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>290</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Hour_spinBox{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Hour_spinBox::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Hour_spinBox::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Hour_spinBox::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Hour_spinBox::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>23</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Minute_spinBox">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>360</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Minute_spinBox{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Minute_spinBox::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Minute_spinBox::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Minute_spinBox::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Minute_spinBox::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>60</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Second_spinBox">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>426</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Second_spinBox{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Second_spinBox::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Second_spinBox::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Second_spinBox::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Second_spinBox::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>60</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_To">
+    <property name="styleSheet">
+     <string notr="true">#page_To{
+	border-image: url(:/PNG/To.png);
+}</string>
+    </property>
+    <widget class="QSpinBox" name="Year_spinBox_To">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>88</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Year_spinBox_To {
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Year_spinBox_To::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Year_spinBox_To::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Year_spinBox_To::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Year_spinBox_To::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="minimum">
+      <number>1402</number>
+     </property>
+     <property name="maximum">
+      <number>1440</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Month_spinBox_To">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>158</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Month_spinBox_To {
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Month_spinBox_To::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Month_spinBox_To::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Month_spinBox_To::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Month_spinBox_To::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>12</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Day_spinBox_To">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>226</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Day_spinBox_To{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Day_spinBox_To::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Day_spinBox_To::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Day_spinBox_To::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Day_spinBox_To::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>31</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Hour_spinBox_To">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>290</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Hour_spinBox_To{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Hour_spinBox_To::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Hour_spinBox_To::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Hour_spinBox_To::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Hour_spinBox_To::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>23</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Minute_spinBox_To">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>358</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Minute_spinBox_To{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Minute_spinBox_To::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Minute_spinBox_To::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Minute_spinBox_To::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Minute_spinBox_To::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>60</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="Second_spinBox_To">
+     <property name="geometry">
+      <rect>
+       <x>144</x>
+       <y>427</y>
+       <width>191</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Second_spinBox_To{
+ padding-left:2px;
+	background-color: rgba(255, 255, 255,0%);
+	color: rgb(255, 255, 255);
+ }
+
+#Second_spinBox_To::up-button {
+	border-image: url(:/Image/Asset 1.png);
+
+     subcontrol-origin: border;
+     subcontrol-position: center right; /* position at the top right corner */
+height:55;
+     width: 30px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     border-width: 1px;
+ }
+#Second_spinBox_To::up-button::pressed{
+ padding-right:5px;
+height:50;
+     width: 25px;
+}
+#Second_spinBox_To::down-button {
+	border-image: url(:/Image/Asset 2.png);
+     subcontrol-origin: border;
+     subcontrol-position: center left; /* position at bottom right corner */
+height:55;
+     width: 30px;
+     border-width: 1px;
+     border-top-width: 0;
+ }
+#Second_spinBox_To::down-button::pressed{
+ padding-left:5px;
+height:50;
+     width: 25px;
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="prefix">
+      <string>0</string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>60</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="oK_btn_To">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>230</y>
+       <width>75</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#oK_btn_To{
+	border-image: url(:/PNG/Form_ok.png);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_Products">
+    <property name="styleSheet">
+     <string notr="true">#page_Products{
+	border-image: url(:/PNG/Products.png);
+}</string>
+    </property>
+    <widget class="QPushButton" name="Product_pushButton_1">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>90</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Product_pushButton_1
+
+{
+	border-image: url(:/PNG/Product_btn.png);
+color: rgb(255, 255, 255);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Product_pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>160</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Product_pushButton_2{
+	border-image: url(:/PNG/Product_btn.png);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Product_pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>230</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Product_pushButton_3{
+	
+	border-image: url(:/PNG/Product_btn.png);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Product_pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>300</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Product_pushButton_4{
+	
+	border-image: url(:/PNG/Product_btn.png);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Product_pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>370</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Product_pushButton_5
+{
+	border-image: url(:/PNG/Product_btn.png);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Product_pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>440</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#Product_pushButton_6{
+	border-image: url(:/PNG/Product_btn.png);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

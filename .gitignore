@@ -1,0 +1,7 @@
+build/
+*.pro.user
+*.obj
+*.dll
+*.exp
+*.exe
+*.idx
