@@ -11,6 +11,7 @@ template <typename T>
 class GenericRepository
 {
 public:
+
     GenericRepository(const QString& tableName, const QSqlDatabase& db)
         : m_tableName(tableName), m_db(db) {}
     QVariant GetValue(const QString& columnName) {
@@ -29,7 +30,7 @@ public:
         QSqlQuery query(m_db);
 
         if (!query.exec(queryStr)) {
-            qDebug() << "Error reading records:" ;
+            qDebug() << "readAll :: Error reading records :" ;
             return results;
         }
 
@@ -92,9 +93,8 @@ public:
 
     bool remove(int id);
 
-private:
-    QString m_tableName;  // نام جدول پایگاه داده
-    QSqlDatabase m_db;    // اتصال پایگاه داده
+    QString m_tableName;
+    QSqlDatabase m_db;
 };
 
 #endif // GENERICREPOSITORY_H

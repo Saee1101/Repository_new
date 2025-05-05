@@ -15,10 +15,11 @@ public:
     DllImport  explicit Business_logic(QObject *parent = nullptr);
 
 
-
+QSqlDatabase business_db;
 
     Connections connectionlayer;
     Entities entities;
+
     DllImport void System_Set_Mode(int Mode);
     DllImport void CheckSystem_Connection_Status();
     DllImport void Initial_System();

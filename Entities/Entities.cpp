@@ -4,16 +4,16 @@
 Entities::Entities(const QSqlDatabase& db)
     : m_db(db),
     CRUD_machine_setting_db("machine_setting", db),
-    CRUD_user_db("user", db)
+    CRUD_user_db("user", db),
+    CRUD_sample_db("sample",db)
 {
     // مقداردهی لیست نمونه‌ها (samples)
-    CRUD_sample_db_List.resize(5);
-    for (int i = 0; i < 5; ++i) {
-        CRUD_sample_db_List[i] = new GenericRepository<Sample>("sample_" + QString::number(i), db);
-    }
+    // CRUD_sample_db_List.resize(5);
+    // for (int i = 0; i < 5; ++i) {
+    //     CRUD_sample_db_List[i] = new GenericRepository<Sample>("sample_" + QString::number(i), db);
+    // }
 
-    // پیش‌فرض: نمونه اول
-    CRUD_sample_db = CRUD_sample_db_List[0];
+    // CRUD_sample_db = CRUD_sample_db_List[0];
 }
 
 void Entities::loadData()
@@ -46,16 +46,18 @@ void Entities::loadData()
         dataMap_machine_setting_db.insert("fl2_reject_status", QString::number(setting.fl2RejectStatus));
 
 
-        int sampleIndex = setting.sampleId;
-        if (sampleIndex >= 0 && sampleIndex < CRUD_sample_db_List.size()) {
-            CRUD_sample_db = CRUD_sample_db_List[sampleIndex];
-        }
-    } else {
+        // int sampleIndex = setting.sampleId;
+        // if (sampleIndex >= 0 && sampleIndex < CRUD_sample_db_List.size())
+        // {
+        //     CRUD_sample_db = CRUD_sample_db_List[sampleIndex];
+        // }
+    }
+    else {
         qDebug() << "No machine settings found!";
     }
 
 
-    QList<Sample> samples = CRUD_sample_db->readAll();
+    QList<Sample> samples = CRUD_sample_db.readAll();
     for (const auto& sample : samples) {
         dataMap_sample_db.insert(sample.name, QString::number(sample.id));
     }

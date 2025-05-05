@@ -25,11 +25,11 @@ public:
 
     GenericRepository<MachineSetting> CRUD_machine_setting_db;
     GenericRepository<User> CRUD_user_db;
+     GenericRepository<Sample> CRUD_sample_db;
 
 
-
-    QVector<GenericRepository<Sample>*> CRUD_sample_db_List;
-    GenericRepository<Sample>* CRUD_sample_db = nullptr;
+    // QVector<GenericRepository<Sample>*> CRUD_sample_db_List;
+    // GenericRepository<Sample>* CRUD_sample_db = nullptr;
 
 
     QMap<QString, QString> dataMap_machine_setting_db;

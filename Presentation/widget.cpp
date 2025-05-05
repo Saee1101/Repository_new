@@ -1205,7 +1205,7 @@ void Widget::on_set_newSample_clicked()
     QString diamiter_min_fl1 = ui->TelN_NewSample_D4->text();
     QString D4_ovality = ui->Ovality_NewSample_D4->text();
 
-    // ساخت یک QVariantMap برای ذخیره تمام داده‌ها
+
     QVariantMap data;
     data["name"] = Name;
     data["diamiter_min_fl2"] = diamiter_min_fl2;
@@ -1217,15 +1217,15 @@ void Widget::on_set_newSample_clicked()
     data["d4_ovality"] = D4_ovality;
     data["d4"] = D4;
 
-    // به‌روزرسانی داده‌ها در پایگاه داده
-    QString condition = "id = 4"; // فرض کنید شرط بر اساس یک ستون کلیدی است (مانند id)
-    if (!Business_logic_layer->entities.CRUD_sample_db_List.at(4)->update(condition, data)) {
-        qDebug() << "Failed to update sample data!";
-    } else {
-        qDebug() << "Sample data updated successfully!";
-    }
 
-    // نمایش دیالوگ
+    // QString condition = "id = 4";
+    // if (!Business_logic_layer->entities.CRUD_sample_db_List.at(4)->update(condition, data)) {
+    //     qDebug() << "Failed to update sample data!";
+    // } else {
+    //     qDebug() << "Sample data updated successfully!";
+    // }
+
+
     dialog = new Dialog_;
     dialog->setObjectName("dialog_Newsample");
     dialog->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
@@ -1233,7 +1233,7 @@ void Widget::on_set_newSample_clicked()
     dialog->setStyleSheet("#dialog_Newsample{ background-color: rgba(0, 0, 0, 0); border-image: url(:/Image/Asset 22.png); }");
     dialog->show();
 
-    // پاک کردن داده‌های رابط کاربری
+
     ui->samplename_NewSample->setText("");
     ui->D5_NewSample->setText("");
     ui->TelP_NewSample_D5->setText("");
@@ -1401,19 +1401,19 @@ void Widget::on_Next_SS05_clicked()
 {
     ui->stackedWidget_2->setCurrentWidget(ui->SampleSelection05);
 
-    for(int i=0;i<Business_logic_layer->entities.CRUD_sample_db_List.length();i++)
-    {
-        QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db_List.at(i)->readAll();
-        for (const Sample& sample : samples) {
-            ui->sampleSelection_comboBox->addItem(sample.getName());
-        }
+    // for(int i=0;i<Business_logic_layer->entities.CRUD_sample_db_List.length();i++)
+    // {
+    //     QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db_List.at(i)->readAll();
+    //     for (const Sample& sample : samples) {
+    //         ui->sampleSelection_comboBox->addItem(sample.getName());
+    //     }
 
-        // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor(QColor(252,177,25)), Qt::BackgroundRole);
-        // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor("black"), Qt::ro);
-        ui->sampleSelection_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
+    //     // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor(QColor(252,177,25)), Qt::BackgroundRole);
+    //     // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor("black"), Qt::ro);
+    //     ui->sampleSelection_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
 
 
-    }
+    // }
 
 }
 
@@ -1506,8 +1506,8 @@ void Widget::on_Next__SS07_clicked()
 //           ui->cl_stage_combo->setCurrentIndex(2);
 //       }
 
-   ui->doubleSpinBox_D4->setValue(Business_logic_layer->entities.CRUD_sample_db->GetValue("d4").toDouble());
-   ui->doubleSpinBox_D5->setValue(Business_logic_layer->entities.CRUD_sample_db->GetValue("d5").toDouble());
+   ui->doubleSpinBox_D4->setValue(Business_logic_layer->entities.CRUD_sample_db.GetValue("d4").toDouble());
+   ui->doubleSpinBox_D5->setValue(Business_logic_layer->entities.CRUD_sample_db.GetValue("d5").toDouble());
        ui->sampleSelection_comboBox->clear();
 
 

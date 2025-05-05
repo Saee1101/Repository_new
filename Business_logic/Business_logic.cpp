@@ -2,7 +2,7 @@
 
 Business_logic::Business_logic(QObject *parent)
     : QObject{parent}
-    , entities(QSqlDatabase::database())
+    , entities(business_db)
 // ,CRUD_machine_setting_db("machine_setting")
 // ,CRUD_sample_db("sample")
 // ,CRUD_user_db("user")

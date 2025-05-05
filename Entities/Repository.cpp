@@ -9,6 +9,7 @@
 // GenericRepository<T>::GenericRepository(const QString& tableName, const QSqlDatabase& db)
 //     : m_tableName(tableName), m_db(db) {}
 
+
 template <typename T>
 bool GenericRepository<T>::create(const QVariantMap& data) {
     QStringList columns, placeholders;

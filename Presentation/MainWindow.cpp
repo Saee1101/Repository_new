@@ -443,7 +443,7 @@ void MainWindow::query_to_db()
 
     QSqlDatabase db;
     db=QSqlDatabase :: addDatabase("QSQLITE");
-    db.setDatabaseName("Pars_Ampoule.db");
+    db.setDatabaseName("ParsAmpoule_P3.db");
     QSqlQuery q;
 
     if(db.open()){
