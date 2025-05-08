@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
     settingPage->hide();
     settingPage->Business_logic_layer=Business_logic_layer;
     settingPage->power_system_flag = powersystemflag;
+
     receive_rejection();
 connect(settingPage,SIGNAL(reject_off_on_cl_signal()),this,SLOT(reject_off_on_cl_slot()));
 connect(settingPage,SIGNAL(reject_off_on_d5_signal()),this,SLOT(reject_off_on_d5_slot()));
@@ -792,6 +793,8 @@ void MainWindow::CustomPlotDraw()
     MinPlotList[1]->setparameter(580,99,21,5,(FL2_max+FL2_min)/2,FL2_max,FL2_min);
        ui->gridLayout_D5_min->addWidget(MinPlotList[1]);
     ui->label_Sample_Name->setText(Business_logic_layer->entities.dataMap_sample_db.value("name"));
+
+
 
     switch (Business_logic_layer->entities.dataMap_machine_setting_db.value("cl_reject_status").toInt()) {
                 case 0 :

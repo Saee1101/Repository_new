@@ -20,6 +20,7 @@ public:
         diamiter_min_fl1 = query.value("diamiter_min_fl1").toDouble();
         diamiter_max_fl1 = query.value("diamiter_max_fl1").toDouble();
         d4Ovality = query.value("d4_ovality").toDouble();
+        selected=query.value("selected").toInt();
     }
 
     int getId() const { return id; }
@@ -32,6 +33,7 @@ public:
     double getdiamiter_min_fl1() const { return diamiter_min_fl1; }
     double getdiamiter_max_fl1() const { return diamiter_max_fl1; }
     double getD4Ovality() const { return d4Ovality; }
+    int getselected() const {return selected;}
 
 public :
     int id;
@@ -44,6 +46,7 @@ public :
     double diamiter_min_fl1;
     double diamiter_max_fl1;
     double d4Ovality;
+    int selected;
 };
 
 #endif // SAMPLE_H

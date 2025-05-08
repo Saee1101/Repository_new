@@ -82,6 +82,7 @@ void Entities::loadData()
           dataMap_sample_db.insert("diamiter_min_fl1",QString::number(sample.diamiter_min_fl1));
            dataMap_sample_db.insert("diamiter_max_fl1",QString::number(sample.diamiter_max_fl1));
           dataMap_sample_db.insert("d4_ovality",QString::number(sample.d4Ovality));
+           dataMap_sample_db.insert("selected",QString::number(sample.selected));
     }
 
 

@@ -1442,8 +1442,13 @@ void Widget::on_sampleSelection_comboBox_textActivated(const QString &arg1)
 void Widget::on_Next__SS07_clicked()
 {
 
+
       ui->stackedWidget_2->setCurrentWidget(ui->SampleSelection06);
     Business_logic_layer->entities.loadData();
+
+      QVariantMap resetData;
+      resetData["selected"] = 0;
+      Business_logic_layer->entities.CRUD_sample_db.update("selected = 1", resetData);
 
       bool  cl_status , fl1_status , fl2_status;
       double cl_stage ;
@@ -1458,7 +1463,11 @@ void Widget::on_Next__SS07_clicked()
       ui->TelP_SampleSelection_d4->setText(QString::number(sample.diamiter_max_fl1));
       ui->TelN_SampleSelection_d4->setText(QString::number(sample.diamiter_min_fl1));
       ui->Ovality_SampleSelection_d4->setText(QString::number(sample.d4Ovality));
+      QVariantMap writedata;
 
+      writedata["selected"] = 1;
+      QString condition = QString("name = '%1'").arg(selectedProductName);
+      Business_logic_layer->entities.CRUD_sample_db.update(condition, writedata);
 
 
       cl_stage =Business_logic_layer->entities.CRUD_machine_setting_db.GetValue("cl_stage").toDouble() ;
