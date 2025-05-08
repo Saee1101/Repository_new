@@ -1401,21 +1401,27 @@ void Widget::on_Next_SS05_clicked()
 {
     ui->stackedWidget_2->setCurrentWidget(ui->SampleSelection05);
 
-    // for(int i=0;i<Business_logic_layer->entities.CRUD_sample_db_List.length();i++)
+    // for(int i=0;!Business_logic_layer->entities.dataMap_sample_db.isEmpty();i++)
     // {
-    //     QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db_List.at(i)->readAll();
-    //     for (const Sample& sample : samples) {
-    //         ui->sampleSelection_comboBox->addItem(sample.getName());
-    //     }
 
-    //     // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor(QColor(252,177,25)), Qt::BackgroundRole);
-    //     // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor("black"), Qt::ro);
+
+    //         ui->sampleSelection_comboBox->addItem(Business_logic_layer->entities.dataMap_sample_db.value("name"));
     //     ui->sampleSelection_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
-
-
+    //     }
+    QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db.readAll();
+    ui->sampleSelection_comboBox->clear();
+    foreach (const Sample& sample , samples) {
+        ui->sampleSelection_comboBox->addItem(sample.name);
+    }
+    // for (const Sample& sample : samples) {
+    //     ui->sampleSelection_comboBox->addItem(sample.name);
     // }
-
+    ui->sampleSelection_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
 }
+        // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor(QColor(252,177,25)), Qt::BackgroundRole);
+        // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor("black"), Qt::ro);
+
+
 
 
 void Widget::on_sampleSelection_comboBox_textActivated(const QString &arg1)
@@ -1435,31 +1441,25 @@ void Widget::on_sampleSelection_comboBox_textActivated(const QString &arg1)
 
 void Widget::on_Next__SS07_clicked()
 {
+
       ui->stackedWidget_2->setCurrentWidget(ui->SampleSelection06);
     Business_logic_layer->entities.loadData();
 
-       bool  cl_status , fl1_status , fl2_status;
+      bool  cl_status , fl1_status , fl2_status;
       double cl_stage ;
-       // QString currentName = ui->sampleSelection_comboBox->currentText();
+      QString selectedProductName = ui->sampleSelection_comboBox->currentText();
+      Sample sample = Business_logic_layer->entities.CRUD_sample_db.readByField("name", selectedProductName);
+      ui->sampleName_sampleSelection->setText(sample.name);
+      ui->D5_sampleSelection->setText(QString::number(sample.d5));
+      ui->TelP_SampleSelection_d5->setText(QString::number(sample.diamiter_max_fl2));
+      ui->TelN_SampleSelection_d5->setText(QString::number(sample.diamiter_min_fl2));
+      ui->Ovality_SampleSelection_d5->setText(QString::number(sample.d5Ovality));
+      ui->D4_sampleSelection->setText(QString::number(sample.d4));
+      ui->TelP_SampleSelection_d4->setText(QString::number(sample.diamiter_max_fl1));
+      ui->TelN_SampleSelection_d4->setText(QString::number(sample.diamiter_min_fl1));
+      ui->Ovality_SampleSelection_d4->setText(QString::number(sample.d4Ovality));
 
-      // ui->sampleName_sampleSelection->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("name"));
-      ui->sampleName_sampleSelection->setText(Business_logic_layer->entities.dataMap_sample_db.value("name"));
-      // ui->D5_sampleSelection->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("d5"));
-      ui->D5_sampleSelection->setText(Business_logic_layer->entities.dataMap_sample_db.value("d5"));
-      // ui->TelP_SampleSelection_d5->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("diamiter_max_fl2"));
-      ui->TelP_SampleSelection_d5->setText(Business_logic_layer->entities.dataMap_sample_db.value("diamiter_max_fl2"));
-      // ui->TelN_SampleSelection_d5->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("diamiter_min_fl2"));
-       ui->TelN_SampleSelection_d5->setText(Business_logic_layer->entities.dataMap_sample_db.value("diamiter_min_fl2"));
-      // ui->Ovality_SampleSelection_d5->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("d5_ovality"));
-        ui->Ovality_SampleSelection_d5->setText(Business_logic_layer->entities.dataMap_sample_db.value("d5_ovality"));
-      // ui->D4_sampleSelection->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("d4"));
-         ui->D4_sampleSelection->setText(Business_logic_layer->entities.dataMap_sample_db.value("d4"));
-      // ui->TelP_SampleSelection_d4->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("diamiter_max_fl1"));
-            ui->TelP_SampleSelection_d4->setText(Business_logic_layer->entities.dataMap_sample_db.value("diamiter_max_fl1"));
-      // ui->TelN_SampleSelection_d4->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("diamiter_min_fl1"));
-          ui->TelN_SampleSelection_d4->setText(Business_logic_layer->entities.dataMap_sample_db.value("diamiter_min_fl1"));
-      // ui->Ovality_SampleSelection_d4->setText(Business_logic_layer->entities.CRUD_sample_db->GetValue("d4_ovality"));
-           ui->Ovality_SampleSelection_d4->setText(Business_logic_layer->entities.dataMap_sample_db.value("d4_ovality"));
+
 
       cl_stage =Business_logic_layer->entities.CRUD_machine_setting_db.GetValue("cl_stage").toDouble() ;
       cl_status = Business_logic_layer->entities.CRUD_machine_setting_db.GetValue("cl_reject_status").toInt();

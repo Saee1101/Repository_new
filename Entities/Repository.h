@@ -44,15 +44,35 @@ public:
     }
 
     T readById(int id);
-  T readByUsername(QString username)
+  // T readByUsername(QString username)
+  //   {
+  //       QString queryStr = QString("SELECT * FROM %1 WHERE user_name = :user_name").arg(m_tableName);
+  //       QSqlQuery query(m_db);
+  //       query.prepare(queryStr);
+  //       query.bindValue(":user_name", username);
+
+  //       if (!query.exec()) {
+  //           qDebug() << "Error reading record by user_name:" ;
+  //           return T();
+  //       }
+
+  //       if (query.next()) {
+  //           T record;
+  //           record.fromQuery(query);
+  //           return record;
+  //       }
+
+  //       return T();
+  //   }
+    T readByField(const QString& columnName, const QVariant& value)
     {
-        QString queryStr = QString("SELECT * FROM %1 WHERE user_name = :user_name").arg(m_tableName);
+        QString queryStr = QString("SELECT * FROM %1 WHERE %2 = :value").arg(m_tableName, columnName);
         QSqlQuery query(m_db);
         query.prepare(queryStr);
-        query.bindValue(":user_name", username);
+        query.bindValue(":value", value);
 
         if (!query.exec()) {
-            qDebug() << "Error reading record by user_name:" ;
+            qDebug() << "Error reading record by field:" ;
             return T();
         }
 
@@ -62,7 +82,7 @@ public:
             return record;
         }
 
-        return T();
+        return T();  // if not found
     }
 
     bool update(const QString& condition, const QVariantMap& data) {

@@ -63,12 +63,12 @@ void Dialog_ChangePassWord::on_Set_btn_clicked()
         Entities entities(QSqlDatabase::database());
 
         // استخراج شناسه کاربر با استفاده از نام کاربری
-        User user = entities.CRUD_user_db.readByUsername("admin");
-        if (user.userName.isEmpty()) {
-            qDebug() << "User not found!";
-            showWarningDialog("warning_dialog_UserNotFound", ":/Image/Asset_UserNotFound.png", nullptr);
-            return;
-        }
+        // User user = entities.CRUD_user_db.readByUsername("admin");
+        // if (user.userName.isEmpty()) {
+        //     qDebug() << "User not found!";
+        //     showWarningDialog("warning_dialog_UserNotFound", ":/Image/Asset_UserNotFound.png", nullptr);
+        //     return;
+        // }
 
         QVariantMap data;
         data["password"] = ui->lineEdit_NewPassword->text();  // مقدار جدید برای ستون "password"

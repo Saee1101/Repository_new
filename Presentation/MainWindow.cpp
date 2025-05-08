@@ -227,9 +227,11 @@ void MainWindow::on_btn_backtosetting_clicked()
 {
     enterpassword=new Dialog_EnterPassWord(this);
     enterpassword->is_operator = true;
-    // enterpassword->current_password=Business_logic_layer->entities.dataMap_user_db.value("admin");
-     enterpassword->current_password=Business_logic_layer->entities.CRUD_user_db.readByUsername("admin").password;
 
+     // enterpassword->current_password=Business_logic_layer->entities.CRUD_user_db.readByUsername("admin").password;
+
+     User user = Business_logic_layer->entities.CRUD_user_db.readByField("user_name", "admin");
+     enterpassword->current_password=user.password;
     connect(enterpassword,SIGNAL(Widget_Show()),this,SLOT(Machine_Setting_Show()));
 
     enterpassword->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint );
@@ -451,7 +453,7 @@ void MainWindow::query_to_db()
 
         qDebug()<<"in db open";
 
-        q.prepare("INSERT INTO statistics(date,hour,minute,cl_accepted,cl_rejected,fl2_accepted,fl2_rejected,fl1_rejected,fl1_accepted,sample_number) VALUES(:Date , :Hour , :Minute ,:CL_acc , :CL_rej , :FL2_acc , :FL2_rej, :FL1_acc , :FL1_rej,:sample_number)");
+        q.prepare("INSERT INTO statistics(date,hour,minute,cl_accepted,cl_rejected,fl2_accepted,fl2_rejected,fl1_rejected,fl1_accepted,sample_id) VALUES(:Date , :Hour , :Minute ,:CL_acc , :CL_rej , :FL2_acc , :FL2_rej, :FL1_acc , :FL1_rej,:sample_number)");
 
         q.bindValue(":Date",formatedDate);
         q.bindValue(":Hour",hourTime);
@@ -462,7 +464,9 @@ void MainWindow::query_to_db()
         q.bindValue(":FL2_rej",fl2_rej);
         q.bindValue(":FL1_rej",fl1_acc);
         q.bindValue(":FL1_acc",fl1_rej);
-        q.bindValue(":sample_number",Business_logic_layer->entities.CRUD_user_db.readByUsername("sample_number").id);
+        // q.bindValue(":sample_number",Business_logic_layer->entities.CRUD_user_db.readByUsername("sample_number").id);
+        // Statistics user = Business_logic_layer->entities.CRUD_user_db.readByField("sample_id", "sample_number");
+        // enterpassword->current_password=user.password;
         // q.bindValue(":sample_number",database_vector.value(12));
     FL_CL_arr[0]=0; //FL2 rejected
     FL_CL_arr[1]=0; //FL2 accepted

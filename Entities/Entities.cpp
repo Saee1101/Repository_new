@@ -7,7 +7,7 @@ Entities::Entities(const QSqlDatabase& db)
     CRUD_user_db("user", db),
     CRUD_sample_db("sample",db)
 {
-    // مقداردهی لیست نمونه‌ها (samples)
+
     // CRUD_sample_db_List.resize(5);
     // for (int i = 0; i < 5; ++i) {
     //     CRUD_sample_db_List[i] = new GenericRepository<Sample>("sample_" + QString::number(i), db);
@@ -57,10 +57,35 @@ void Entities::loadData()
     }
 
 
+    // QList<Sample> samples = CRUD_sample_db.readAll();
+    // for (const auto& sample : samples) {
+    //     dataMap_sample_db.insert(sample.name, QString::number(sample.id));
+    // }
+
+    // QList<MachineSetting> machineSettings = CRUD_machine_setting_db.readAll();
+    // if (!machineSettings.empty()) {
+    //     const MachineSetting& setting = machineSettings.first();
+
+    //     dataMap_machine_setting_db.insert("sample_id", QString::number(setting.sampleId));
+
     QList<Sample> samples = CRUD_sample_db.readAll();
-    for (const auto& sample : samples) {
-        dataMap_sample_db.insert(sample.name, QString::number(sample.id));
+    if(!samples.isEmpty())
+    {
+        const Sample& sample = samples.first();
+        dataMap_sample_db.insert("id",QString::number(sample.id));
+        dataMap_sample_db.insert("name",sample.name);
+         dataMap_sample_db.insert("diamiter_min_fl2",QString::number(sample.diamiter_min_fl2));
+        dataMap_sample_db.insert("diamiter_max_fl2",QString::number(sample.diamiter_max_fl2));
+         dataMap_sample_db.insert("d5_ovality",QString::number(sample.d5Ovality));
+         dataMap_sample_db.insert("d5",QString::number(sample.d5));
+          dataMap_sample_db.insert("d4",QString::number(sample.d4));
+          dataMap_sample_db.insert("diamiter_min_fl1",QString::number(sample.diamiter_min_fl1));
+           dataMap_sample_db.insert("diamiter_max_fl1",QString::number(sample.diamiter_max_fl1));
+          dataMap_sample_db.insert("d4_ovality",QString::number(sample.d4Ovality));
     }
+
+
+
 
 
     QList<User> users = CRUD_user_db.readAll();
