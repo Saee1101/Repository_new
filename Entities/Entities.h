@@ -3,9 +3,10 @@
 
 #include "Entities_global.h"
 #include "Repository.h"
-#include "MachineSetting.h"
-#include "User.h"
-#include "Sample.h"
+#include "machineSetting.h"
+#include "user.h"
+#include "sample.h"
+
 // #include "UserRole.h"
 #include <QMap>
 #include <QVector>

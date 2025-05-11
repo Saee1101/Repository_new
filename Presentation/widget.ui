@@ -6453,7 +6453,7 @@ border-top-width: 0;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>6</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="SampleSelection02">
       <property name="styleSheet">

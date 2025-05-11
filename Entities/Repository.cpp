@@ -10,34 +10,7 @@
 //     : m_tableName(tableName), m_db(db) {}
 
 
-template <typename T>
-bool GenericRepository<T>::create(const QVariantMap& data) {
-    QStringList columns, placeholders;
 
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it) {
-        columns << it.key();
-        placeholders << ":" + it.key();
-    }
-
-    QString queryStr = QString("INSERT INTO %1 (%2) VALUES (%3)")
-                           .arg(m_tableName)
-                           .arg(columns.join(", "))
-                           .arg(placeholders.join(", "));
-
-    QSqlQuery query(m_db);
-    query.prepare(queryStr);
-
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it) {
-        query.bindValue(":" + it.key(), it.value());
-    }
-
-    if (!query.exec()) {
-        qDebug() << "Error creating record:" << query.lastError().text();
-        return false;
-    }
-
-    return true;
-}
 
 // template <typename T>
 // QList<T> GenericRepository<T>::readAll() {

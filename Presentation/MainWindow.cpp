@@ -779,10 +779,12 @@ void MainWindow::CustomPlotDraw()
         MaxPlotList[i]=new newplotclass;
         MinPlotList[i]=new newplotclass;
     }
-    double FL1_min=Business_logic_layer->entities.dataMap_sample_db.value("diamiter_min_fl1").toDouble();
-    double FL1_max=Business_logic_layer->entities.dataMap_sample_db.value("diamiter_max_fl1").toDouble();
-    double FL2_min=Business_logic_layer->entities.dataMap_sample_db.value("diamiter_min_fl2").toDouble();
-    double FL2_max=Business_logic_layer->entities.dataMap_sample_db.value("diamiter_max_fl2").toDouble();
+
+    Sample sample =Business_logic_layer->entities.CRUD_sample_db.readByField("selected",1);
+    double FL1_min=sample.diamiter_min_fl1;
+    double FL1_max=sample.diamiter_max_fl1;
+    double FL2_min=sample.diamiter_min_fl2;
+    double FL2_max=sample.diamiter_max_fl2;
     MaxPlotList[0]->setparameter(580,99,21,5,(FL1_max+FL1_min)/2,FL1_max,FL1_min);
     ui->gridLayout_D4_max->addWidget(MaxPlotList[0]);
 
@@ -792,7 +794,7 @@ void MainWindow::CustomPlotDraw()
     ui->gridLayout_D5_max->addWidget(MaxPlotList[1]);
     MinPlotList[1]->setparameter(580,99,21,5,(FL2_max+FL2_min)/2,FL2_max,FL2_min);
        ui->gridLayout_D5_min->addWidget(MinPlotList[1]);
-    ui->label_Sample_Name->setText(Business_logic_layer->entities.dataMap_sample_db.value("name"));
+       ui->label_Sample_Name->setText(sample.name);
 
 
 

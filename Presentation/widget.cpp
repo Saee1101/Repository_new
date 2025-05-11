@@ -1193,7 +1193,7 @@ void Widget::on_Next_NS05_clicked()
 
 void Widget::on_set_newSample_clicked()
 {
-    // دریافت داده‌ها از رابط کاربری
+
     QString Name = ui->samplename_NewSample->text();
     QString D5 = ui->D5_NewSample->text();
     QString diamiter_max_fl2 = ui->TelP_NewSample_D5->text();
@@ -1218,12 +1218,12 @@ void Widget::on_set_newSample_clicked()
     data["d4"] = D4;
 
 
-    // QString condition = "id = 4";
-    // if (!Business_logic_layer->entities.CRUD_sample_db_List.at(4)->update(condition, data)) {
-    //     qDebug() << "Failed to update sample data!";
-    // } else {
-    //     qDebug() << "Sample data updated successfully!";
-    // }
+
+    if (!Business_logic_layer->entities.CRUD_sample_db.create(data)) {
+        qDebug() << "Failed to creat sample data!";
+    } else {
+        qDebug() << "Sample data creat successfully!";
+    }
 
 
     dialog = new Dialog_;
@@ -1308,6 +1308,14 @@ void Widget::on_Cancel_ES01_clicked()
 
 void Widget::on_Next_ES03_clicked()
 {
+
+    QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db.readAll();
+    ui->sampleName_editSample_comboBox->clear();
+    foreach (const Sample& sample , samples) {
+        ui->sampleName_editSample_comboBox->addItem(sample.name);
+    }
+    ui->sampleName_editSample_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
+
     ui->stackedWidget_2->setCurrentWidget(ui->EditSample05);
 }
 

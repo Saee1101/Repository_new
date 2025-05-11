@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include <QList>
 
+
 template <typename T>
 class GenericRepository
 {
@@ -23,7 +24,8 @@ public:
         qDebug() << "GetValue error:" ;
         return QVariant();
     }
-    bool create(const QVariantMap& data);
+
+
     QList<T> readAll() {
         QList<T> results;
         QString queryStr = QString("SELECT * FROM %1").arg(m_tableName);
@@ -91,11 +93,40 @@ public:
         }
         return true;
     }
+    // bool create(const QVariantMap& data);
+    // template <typename T>
+    bool create(const QVariantMap& data) {
+        QStringList columns, placeholders;
 
+        for (auto it = data.constBegin(); it != data.constEnd(); ++it) {
+            columns << it.key();
+            placeholders << ":" + it.key();
+        }
+
+        QString queryStr = QString("INSERT INTO %1 (%2) VALUES (%3)")
+                               .arg(m_tableName)
+                               .arg(columns.join(", "))
+                               .arg(placeholders.join(", "));
+
+        QSqlQuery query(m_db);
+        query.prepare(queryStr);
+
+        for (auto it = data.constBegin(); it != data.constEnd(); ++it) {
+            query.bindValue(":" + it.key(), it.value());
+        }
+
+        if (!query.exec()) {
+            qDebug() << "Error creating record:" ;
+            return false;
+        }
+
+        return true;
+    }
     bool remove(int id);
 
     QString m_tableName;
     QSqlDatabase m_db;
+
 };
 
 #endif // GENERICREPOSITORY_H
