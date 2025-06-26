@@ -35,7 +35,7 @@ public:
     double getD4Ovality() const { return d4Ovality; }
     int getselected() const {return selected;}
 
-public :
+
     int id;
     QString name;
     double diamiter_min_fl2;

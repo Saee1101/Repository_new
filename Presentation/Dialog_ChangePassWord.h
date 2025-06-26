@@ -23,8 +23,11 @@ public:
     ~Dialog_ChangePassWord();
  QProcess *keyboard;
  Warning_Dialog *warnin_dialog;
-  // Business_logic *Business_logic_layer;
+
+    // Business_logic Business_logic_layer = Business_logic(this);
+      // QScopedPointer<Business_logic> Business_logic_layer(new Business_logic);
   QScopedPointer<Business_logic> Business_logic_layer;
+
 private slots:
     void on_Set_btn_clicked();
 

@@ -755,7 +755,7 @@ void Widget::on_Test_DS_CL_clicked()
 
               QString condition = "id = 1";
 
-              // فراخوانی متد update
+
               if (!Business_logic_layer->entities.CRUD_machine_setting_db.update(condition, data)) {
                   qDebug() << "Failed to update machine settings!";
               } else {
@@ -1309,12 +1309,16 @@ void Widget::on_Cancel_ES01_clicked()
 void Widget::on_Next_ES03_clicked()
 {
 
-    QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db.readAll();
+    samples = Business_logic_layer->entities.CRUD_sample_db.readAll();
     ui->sampleName_editSample_comboBox->clear();
     foreach (const Sample& sample , samples) {
         ui->sampleName_editSample_comboBox->addItem(sample.name);
+
     }
+    connect(ui->sampleName_editSample_comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &Widget::on_sample_fill);
     ui->sampleName_editSample_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
+
 
     ui->stackedWidget_2->setCurrentWidget(ui->EditSample05);
 }
@@ -1326,19 +1330,37 @@ void Widget::on_set_EditSample_clicked()
     QString currentName = ui->sampleName_editSample_comboBox->currentText();
 
 
-    QString Name,D5,Telp_D5,Teln_D5,D5_ovality,D4,D4_ovality,Teln_D4,Telp_D4;
+    QString diamiter_min_fl2,diamiter_max_fl2,D5_ovality,D5,D4,diamiter_min_fl1,diamiter_max_fl1,D4_ovality;
 
           D5=ui->D5_editSample->text();
-          Telp_D5=ui->TelP_editSample_D5->text();
-          Teln_D5=ui->TelN_editSample_D5->text();
+          diamiter_max_fl2=ui->TelP_editSample_D5->text();
+          diamiter_min_fl2=ui->TelN_editSample_D5->text();
           D5_ovality=ui->ovality_editSample_D5->text();
 
           D4=ui->D4_editSample->text();
-          Telp_D4=ui->TelP_editSample_D4->text();
-          Teln_D4=ui->TelN_editSample_D4->text();
+          diamiter_max_fl1=ui->TelP_editSample_D4->text();
+          diamiter_min_fl1=ui->TelN_editSample_D4->text();
           D4_ovality=ui->ovality_editSample_D4->text();
 
+          QVariantMap data;
+          data["diamiter_min_fl2"] = diamiter_min_fl2;
+          data["diamiter_max_fl2"] = diamiter_max_fl2;
+          data["d5_ovality"] = D5_ovality;
+          data["d5"] = D5;
+          data["diamiter_min_fl1"] = diamiter_min_fl1;
+          data["diamiter_max_fl1"] = diamiter_max_fl1;
+          data["d4_ovality"] = D4_ovality;
+          data["d4"] = D4;
 
+
+          QString condition = "name ='"+currentName+"'";
+          qDebug() << "condition condition condition condition condition condition :::"<<condition;
+
+          if (!Business_logic_layer->entities.CRUD_sample_db.update(condition, data)) {
+              qDebug() << "Failed to update sample_db !";
+          } else {
+              qDebug() << "Password updated successfully for sample_db!";
+          }
 
 
 
@@ -1359,6 +1381,7 @@ void Widget::on_sampleName_editSample_comboBox_textActivated(const QString &arg1
 {
 
     QString currentName = ui->sampleName_editSample_comboBox->currentText();
+
 }
 
 
@@ -1409,21 +1432,12 @@ void Widget::on_Next_SS05_clicked()
 {
     ui->stackedWidget_2->setCurrentWidget(ui->SampleSelection05);
 
-    // for(int i=0;!Business_logic_layer->entities.dataMap_sample_db.isEmpty();i++)
-    // {
-
-
-    //         ui->sampleSelection_comboBox->addItem(Business_logic_layer->entities.dataMap_sample_db.value("name"));
-    //     ui->sampleSelection_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
-    //     }
     QList<Sample> samples = Business_logic_layer->entities.CRUD_sample_db.readAll();
     ui->sampleSelection_comboBox->clear();
     foreach (const Sample& sample , samples) {
         ui->sampleSelection_comboBox->addItem(sample.name);
     }
-    // for (const Sample& sample : samples) {
-    //     ui->sampleSelection_comboBox->addItem(sample.name);
-    // }
+
     ui->sampleSelection_comboBox->view()->window()->setStyleSheet("border : 1px solid yellow; border-radius: 5px;");
 }
         // ui->sampleSelection_comboBox->model()->setData(ui->sampleSelection_comboBox->model()->index(i, 0), QColor(QColor(252,177,25)), Qt::BackgroundRole);
@@ -1542,10 +1556,8 @@ void Widget::on_Done_SS01_clicked()
     int d4_status , d5_status , cl_status;
     double d4_sensitivity , d5_sensitivity;
 
-
     d4_sensitivity = ui->doubleSpinBox_D4->value();
     d5_sensitivity = ui->doubleSpinBox_D5->value();
-
 
     if(rejectsystemflag_D4==true){
         d4_status = 1;
@@ -1553,7 +1565,6 @@ void Widget::on_Done_SS01_clicked()
         d4_status = 0;
     }
 
-    qDebug()<<"d4_status"<<d4_status;
 
     if(rejectsystemflag_D5==true){
         d5_status = 1;
@@ -1561,16 +1572,11 @@ void Widget::on_Done_SS01_clicked()
         d5_status = 0;
     }
 
-    qDebug()<<"d5_status"<<d5_status;
-
-
-    if(rejectsystemflag_CL==true){
+   if(rejectsystemflag_CL==true){
         cl_status = 1;
     }else{
         cl_status = 0;
     }
-
-    qDebug()<<"cl_status"<<cl_status;
 
     ui->settingstackedWidget->setCurrentWidget(ui->SettingStack3);
     ui->stackedWidget_3->setCurrentWidget(ui->MachineSetting);
@@ -1608,11 +1614,13 @@ void Widget::on_Done_SS01_clicked()
 
 void Widget::on_Changepassword_btn_clicked()
 {
-      // Business_logic_layer->entities.CRUD_user_db.Update("admin",ui->lineEdit->text());
+
+
+        // Business_logic_layer->entities.CRUD_user_db.Update("admin",ui->lineEdit->text());
     changepassword =new Dialog_ChangePassWord(this);
-changepassword->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
-changepassword->setGeometry(390,170,480,510);
-changepassword->show();
+    changepassword->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+    changepassword->setGeometry(390,170,480,510);
+    changepassword->show();
 }
 
 
@@ -2268,5 +2276,16 @@ void Widget::on_horizontalSlider_exposure_Fl2_sliderMoved(int position)
 void Widget::on_horizontalSlider_exposure_CL_sliderMoved(int position)
 {
     ui->EXPOSURE_CL_lineEdit->setText(QString::number(position));
+}
+
+void Widget::on_sample_fill(int index)
+{
+    const Sample& sample = samples.at(index);
+    ui->D4_editSample->setText(QString::number(sample.d4));
+     ui->TelN_editSample_D4->setText(QString::number(sample.diamiter_min_fl1));
+    ui->TelP_editSample_D4->setText(QString::number(sample.diamiter_max_fl1));
+    ui->TelN_editSample_D5->setText(QString::number(sample.diamiter_min_fl2));
+    ui->TelP_editSample_D5->setText(QString::number(sample.diamiter_max_fl2));
+    ui->D5_editSample->setText(QString::number(sample.d5));
 }
 

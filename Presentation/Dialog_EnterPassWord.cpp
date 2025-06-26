@@ -38,7 +38,6 @@ void Dialog_EnterPassWord::set_echoMode()
 void Dialog_EnterPassWord::on_Ok_btn_clicked()
 {
 
-    qDebug()<<"current_password  " <<current_password;
     if (ui->lineEdit_Enterpassword->text()=="" || ui->lineEdit_Enterpassword->text() != current_password)
     {
 

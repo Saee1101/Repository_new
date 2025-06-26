@@ -13,4 +13,6 @@ pushbutton->setFixedSize(348,71);
     layout_->addWidget(pushbutton,0,Qt::AlignCenter | Qt::AlignBottom );
 
     connect(pushbutton, SIGNAL(clicked()), this, SLOT(accept()));
+    delete layout_;
+    delete pushbutton;
 }

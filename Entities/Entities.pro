@@ -14,6 +14,7 @@ SOURCES += \
     Repository.cpp
 
 HEADERS += \
+    BaseEntity.h \
     Entities_global.h \
     Entities.h \
     Repository.h \

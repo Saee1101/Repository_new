@@ -325,7 +325,7 @@ void on_horizontalSlider_exposure_CL_sliderMoved(int position);
 
 public slots:
 
-
+void on_sample_fill(int index);
 void show_Devpage();
 void OpticPreviewImageRecived1(HalconCpp::HImage*);
 void OpticPreviewImageRecived2(HalconCpp::HImage*);
@@ -378,5 +378,6 @@ signals :
 
 private:
     Ui::Widget *ui;
+    QList<Sample> samples;
 };
 #endif // WIDGET_H

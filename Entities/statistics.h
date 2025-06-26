@@ -35,7 +35,6 @@ public:
     int getFl1Rejected() const { return fl1Rejected; }
     int getSampleId() const { return sampleId; }
 
-public :
     int id;
     QString date;
     int hour;

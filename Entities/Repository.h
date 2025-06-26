@@ -14,7 +14,9 @@ class GenericRepository
 public:
 
     GenericRepository(const QString& tableName, const QSqlDatabase& db)
-        : m_tableName(tableName), m_db(db) {}
+        : m_tableName(tableName), m_db(db) {
+
+    }
     QVariant GetValue(const QString& columnName) {
         QString queryStr = QString("SELECT %1 FROM %2 LIMIT 1").arg(columnName, m_tableName);
         QSqlQuery query(m_db);
@@ -69,17 +71,31 @@ public:
     }
 
     bool update(const QString& condition, const QVariantMap& data) {
+         qDebug() << "data.isEmpty(): " << data.isEmpty();
+        // qDebug() << "m_tableName : " << m_tableName.isEmpty();
+        //  qDebug() << "condition;;;"<<condition.isEmpty() ;
+        // qDebug() << "m_tableName ;;;;;"<<m_tableName ;
+        // qDebug() << "data ;;;;"<<data ;
+        // qDebug() << "condition;;;"<<condition ;
+        if (m_tableName.isEmpty()) {
+            qDebug() << "Warning: m_tableName is empty!";
+        } else {
+            qDebug() << "m_tableName:" << m_tableName;
+        }
         QStringList assignments;
 
         for (auto it = data.begin(); it != data.end(); ++it) {
+            qDebug() << " ;;;;" ;
             assignments << QString("%1 = :%2").arg(it.key()).arg(it.key());
+
         }
+
 
         QString queryStr = QString("UPDATE %1 SET %2 WHERE %3")
                                .arg(m_tableName)
                                .arg(assignments.join(", "))
                                .arg(condition);
-
+        qDebug() << "queryStr  :  queryStr  : queryStr  : " <<queryStr;
         QSqlQuery query(m_db);
         query.prepare(queryStr);
 

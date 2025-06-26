@@ -21,7 +21,7 @@ public:
     QString getPassword() const { return password; }
     QString getDeveloperPassword() const { return developerPassword; }
 
-public:
+
     int id;
     QString userName;
     QString password;
