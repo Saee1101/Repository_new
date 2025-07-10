@@ -32,7 +32,7 @@ class  Connections : public QObject
     Q_OBJECT
 public:
  DllImport explicit Connections(QObject *parent = nullptr);
-    DllImport void Inspection_Start(QMap<QString, QString> *samplemap,QMap<QString, QString> *machinmap);
+    DllImport void Inspection_Start(QVariantMap *samplemap,QVariantMap *machinmap);
     DllImport void Inspection_Stop();
     DllImport void Calibration_Start(int Station,double NewMinDiameter,double NewMaxDiameter);
     DllImport void Calibration_Stop(int Station);
@@ -42,12 +42,12 @@ public:
     DllImport  void Check_Camera();
     DllImport  void Disconnect_Camera();
     DllImport  bool Reconnect_Camera(int cameracount);
-    DllImport  void camera_init(QMap<QString, QString> *map);
-    DllImport  bool Machin_init(QMap<QString, QString> *map);
+    DllImport  void camera_init(QVariantMap *map);
+    DllImport  bool Machin_init(QVariantMap *map);
     DllImport void IspectionInit();
     DllImport void CalibrationInit();
-    DllImport void IspectionUpdate(QMap<QString, QString> *samplemap,QMap<QString, QString> *machinmap,int station);
-    DllImport void CalibrationUpdate(QMap<QString, QString> *map,int station);
+    DllImport void IspectionUpdate(QVariantMap *samplemap,QVariantMap *machinmap,int station);
+    DllImport void CalibrationUpdate(QVariantMap *map,int station);
     DllImport void MotorTest(int item,double speed,int direction,bool ONOFF);
     DllImport void JackTest(int item,double delaySetting,double TimeDur,int JacktestMode,bool ONOFF);
     DllImport void Camera_Start_Grabbing_Setting(int cameranumber,int cameraGrabMode,bool ONOFF);

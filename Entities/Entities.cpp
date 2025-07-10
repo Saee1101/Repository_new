@@ -8,98 +8,41 @@ Entities::Entities(const QSqlDatabase& db)
     CRUD_sample_db("sample",db)
 {
 
-    // CRUD_sample_db_List.resize(5);
-    // for (int i = 0; i < 5; ++i) {
-    //     CRUD_sample_db_List[i] = new GenericRepository<Sample>("sample_" + QString::number(i), db);
-    // }
-
-    // CRUD_sample_db = CRUD_sample_db_List[0];
 }
 
 void Entities::loadData()
 {
-    // std::vector<MachineSetting> machineSettings = CRUD_machine_setting_db.readAll();
+    // بارگذاری MachineSetting
     QList<MachineSetting> machineSettings = CRUD_machine_setting_db.readAll();
-    if (!machineSettings.empty()) {
+    if (!machineSettings.isEmpty()) {
         const MachineSetting& setting = machineSettings.first();
+        QVariantMap map = setting.toVariantMap();
 
-        dataMap_machine_setting_db.insert("sample_id", QString::number(setting.sampleId));
-        dataMap_machine_setting_db.insert("lift_delay_fl", QString::number(setting.liftDelayFl));
-        dataMap_machine_setting_db.insert("lift_time_fl", QString::number(setting.liftTimeFl));
-        dataMap_machine_setting_db.insert("lift_delay_cl", QString::number(setting.liftDelayCl));
-        dataMap_machine_setting_db.insert("lift_time_cl", QString::number(setting.liftTimeCl));
-        dataMap_machine_setting_db.insert("camera_delay_fl1", QString::number(setting.cameraDelayFl1));
-        dataMap_machine_setting_db.insert("camera_delay_fl2", QString::number(setting.cameraDelayFl2));
-        dataMap_machine_setting_db.insert("camera_delay_cl", QString::number(setting.cameraDelayCl));
-        dataMap_machine_setting_db.insert("picture_count_cl", QString::number(setting.pictureCountCl));
-        dataMap_machine_setting_db.insert("camera_interval_cl", QString::number(setting.cameraIntervalCl));
-        dataMap_machine_setting_db.insert("reject_delay", QString::number(setting.rejectDelay));
-        dataMap_machine_setting_db.insert("reject_time", QString::number(setting.rejectTime));
-        dataMap_machine_setting_db.insert("d5_sensitivity", QString::number(setting.d5Sensitivity));
-        dataMap_machine_setting_db.insert("d4_sensitivity", QString::number(setting.d4Sensitivity));
-        dataMap_machine_setting_db.insert("pixel_to_mm_fl2", QString::number(setting.pixelToMmFl2));
-        dataMap_machine_setting_db.insert("pixel_to_mm_fl1", QString::number(setting.pixelToMmFl1));
-        dataMap_machine_setting_db.insert("cl_sensitivity", QString::number(setting.clSensitivity));
-        dataMap_machine_setting_db.insert("cl_stage", QString::number(setting.clStage));
-        dataMap_machine_setting_db.insert("cl_reject_status", QString::number(setting.clRejectStatus));
-        dataMap_machine_setting_db.insert("fl1_reject_status", QString::number(setting.fl1RejectStatus));
-        dataMap_machine_setting_db.insert("fl2_reject_status", QString::number(setting.fl2RejectStatus));
-
-
-        // int sampleIndex = setting.sampleId;
-        // if (sampleIndex >= 0 && sampleIndex < CRUD_sample_db_List.size())
-        // {
-        //     CRUD_sample_db = CRUD_sample_db_List[sampleIndex];
-        // }
+        for (auto it = map.begin(); it != map.end(); ++it) {
+            dataMap_machine_setting_db.insert(it.key(), it.value().toString());
+        }
     }
-    else {
+        else {
         qDebug() << "No machine settings found!";
     }
 
-
-    // QList<Sample> samples = CRUD_sample_db.readAll();
-    // for (const auto& sample : samples) {
-    //     dataMap_sample_db.insert(sample.name, QString::number(sample.id));
-    // }
-
-    // QList<MachineSetting> machineSettings = CRUD_machine_setting_db.readAll();
-    // if (!machineSettings.empty()) {
-    //     const MachineSetting& setting = machineSettings.first();
-
-    //     dataMap_machine_setting_db.insert("sample_id", QString::number(setting.sampleId));
-
+    // بارگذاری Sample
     QList<Sample> samples = CRUD_sample_db.readAll();
-    if(!samples.isEmpty())
-    {
+    if (!samples.isEmpty()) {
         const Sample& sample = samples.first();
-        dataMap_sample_db.insert("id",QString::number(sample.id));
-        dataMap_sample_db.insert("name",sample.name);
-         dataMap_sample_db.insert("diamiter_min_fl2",QString::number(sample.diamiter_min_fl2));
-        dataMap_sample_db.insert("diamiter_max_fl2",QString::number(sample.diamiter_max_fl2));
-         dataMap_sample_db.insert("d5_ovality",QString::number(sample.d5Ovality));
-         dataMap_sample_db.insert("d5",QString::number(sample.d5));
-          dataMap_sample_db.insert("d4",QString::number(sample.d4));
-          dataMap_sample_db.insert("diamiter_min_fl1",QString::number(sample.diamiter_min_fl1));
-           dataMap_sample_db.insert("diamiter_max_fl1",QString::number(sample.diamiter_max_fl1));
-          dataMap_sample_db.insert("d4_ovality",QString::number(sample.d4Ovality));
-           dataMap_sample_db.insert("selected",QString::number(sample.selected));
+        QVariantMap map = sample.toVariantMap();
+
+        for (auto it = map.begin(); it != map.end(); ++it) {
+            dataMap_sample_db.insert(it.key(), it.value().toString());
+        }
     }
 
-
-
-
-
+    // بارگذاری User
     QList<User> users = CRUD_user_db.readAll();
     for (const auto& user : users) {
-        dataMap_user_db.insert(user.userName, user.password);
+        // چون ما userName و password را در toVariantMap نمی‌بینیم، مستقیم استفاده می‌کنیم:
+        dataMap_user_db.insert(user.userName,user.passWord);
     }
-
-    // خواندن نقش کاربران (user roles) (فعلا اگر کلاسش آماده بشه اضافه می‌کنیم)
-    // مثال برای آینده:
-    // QList<UserRole> roles = CRUD_user_role_db.readAll();
-    // for (const auto& role : roles) {
-    //     dataMap_user_role_db.insert(role.roleName, role.description);
-    // }
 }
 
 

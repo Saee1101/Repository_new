@@ -230,9 +230,13 @@ void MainWindow::on_btn_backtosetting_clicked()
     enterpassword->is_operator = true;
 
      // enterpassword->current_password=Business_logic_layer->entities.CRUD_user_db.readByUsername("admin").password;
-
+    // User newUser;
+    // newUser.username = "javad";
+    // GenericRepository<User> userRepo("users", QSqlDatabase::database());
+    // User u = userRepo.readByField("username", "admin");
      User user = Business_logic_layer->entities.CRUD_user_db.readByField("user_name", "admin");
-     enterpassword->current_password=user.password;
+      qDebug()<<"user.password user.password user.password  :::::"<< user.passWord;
+     enterpassword->current_password=user.passWord;
     connect(enterpassword,SIGNAL(Widget_Show()),this,SLOT(Machine_Setting_Show()));
 
     enterpassword->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint );

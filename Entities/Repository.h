@@ -9,7 +9,7 @@
 
 
 template <typename T>
-class GenericRepository
+class  GenericRepository
 {
 public:
 
@@ -40,7 +40,7 @@ public:
 
         while (query.next()) {
             T record;
-            record.fromQuery(query);
+            record.fromQueryAuto(query);
             results.append(record);
         }
 
@@ -57,21 +57,20 @@ public:
         query.bindValue(":value", value);
 
         if (!query.exec()) {
-            qDebug() << "Error reading record by field:" ;
+
             return T();
         }
 
-        if (query.next()) {
+        if (query.next() || query.exec()) {
             T record;
-            record.fromQuery(query);
+            record.fromQueryAuto(query);
             return record;
         }
 
         return T();  // if not found
     }
 
-    bool update(const QString& condition, const QVariantMap& data) {
-         qDebug() << "data.isEmpty(): " << data.isEmpty();
+   bool update(const QString& condition, const QVariantMap& data) {
         // qDebug() << "m_tableName : " << m_tableName.isEmpty();
         //  qDebug() << "condition;;;"<<condition.isEmpty() ;
         // qDebug() << "m_tableName ;;;;;"<<m_tableName ;
@@ -85,7 +84,7 @@ public:
         QStringList assignments;
 
         for (auto it = data.begin(); it != data.end(); ++it) {
-            qDebug() << " ;;;;" ;
+
             assignments << QString("%1 = :%2").arg(it.key()).arg(it.key());
 
         }

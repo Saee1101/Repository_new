@@ -164,20 +164,20 @@ Widget::~Widget()
 void Widget::UpdateUIFromDB()
 {
     Business_logic_layer->entities.loadData();
-    ui->EXPOSURE_CL_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Exposure_fl3"));
-    ui->EXPOSURE_FL2_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Exposure_fl2"));
-    ui->EXPOSURE_FL1_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Exposure_fl1"));
-    ui->liftDelay_FL2_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_delay_fl"));
-    ui->liftTime_FL2_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_time_fl"));
-    ui->liftTime_CL_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_time_cl"));
-    ui->liftDelay_CL_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_delay_cl"));
-    ui->CameraDelay_DS_FL1->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Delay_fl1"));
-    ui->CameraDelay_DS_FL2->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Delay_fl2"));
-    ui->CameraDelay_DS_CL->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Delay_fl3"));
-    ui->CameraInterval_DS_CL->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("FrameRate_fl3"));
-    ui->PictureCount_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("picture_count_cl"));
-    ui->RejectDelay_RS->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("reject_delay"));
-    ui->RejectTime_RS->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("reject_time"));
+    ui->EXPOSURE_CL_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Exposure_fl3").toString());
+    ui->EXPOSURE_FL2_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Exposure_fl2").toString());
+    ui->EXPOSURE_FL1_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Exposure_fl1").toString());
+    ui->liftDelay_FL2_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_delay_fl").toString());
+    ui->liftTime_FL2_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_time_fl").toString());
+    ui->liftTime_CL_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_time_cl").toString());
+    ui->liftDelay_CL_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("lift_delay_cl").toString());
+    ui->CameraDelay_DS_FL1->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Delay_fl1").toString());
+    ui->CameraDelay_DS_FL2->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Delay_fl2").toString());
+    ui->CameraDelay_DS_CL->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("Delay_fl3").toString());
+    ui->CameraInterval_DS_CL->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("FrameRate_fl3").toString());
+    ui->PictureCount_lineEdit->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("picture_count_cl").toString());
+    ui->RejectDelay_RS->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("reject_delay").toString());
+    ui->RejectTime_RS->setText(Business_logic_layer->entities.dataMap_machine_setting_db.value("reject_time").toString());
 }
 
 

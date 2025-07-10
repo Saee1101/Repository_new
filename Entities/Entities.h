@@ -26,17 +26,21 @@ public:
 
     GenericRepository<MachineSetting> CRUD_machine_setting_db;
     GenericRepository<User> CRUD_user_db;
-     GenericRepository<Sample> CRUD_sample_db;
+    GenericRepository<Sample> CRUD_sample_db;
 
 
     // QVector<GenericRepository<Sample>*> CRUD_sample_db_List;
     // GenericRepository<Sample>* CRUD_sample_db = nullptr;
 
 
-    QMap<QString, QString> dataMap_machine_setting_db;
-    QMap<QString, QString> dataMap_user_db;
-    QMap<QString, QString> dataMap_sample_db;
-    QMap<QString, QString> dataMap_user_role_db;
+    // QMap<QString, QString> dataMap_machine_setting_db;
+    // QMap<QString, QString> dataMap_user_db;
+    // QMap<QString, QString> dataMap_sample_db;
+    // QMap<QString, QString> dataMap_user_role_db;
+    QVariantMap dataMap_machine_setting_db;
+    QVariantMap dataMap_user_db;
+    QVariantMap dataMap_sample_db;
+    QVariantMap dataMap_user_role_db;
 };
 
 #endif // ENTITIES_H

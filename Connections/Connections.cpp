@@ -6,7 +6,7 @@ Connections::Connections(QObject *parent)
     plcmodbusconnect_ = new plcmodbusconnect(this);
 }
 
-void Connections::Inspection_Start(QMap<QString, QString> *samplemap,QMap<QString, QString> *machinmap)
+void Connections::Inspection_Start(QVariantMap *samplemap,QVariantMap *machinmap)
 {
     savenumber=0;
     Machie_Run(MachineManager::senario::Inspection);
@@ -79,7 +79,7 @@ void Connections::Check_Camera()
         Camera_Connection_Flag[Stations::CL]=cameralist.contains(Available_Cameras_->RegisteredCameraName.at(Stations::CL));
 }
 
-void Connections::camera_init(QMap<QString, QString> *map)
+void Connections::camera_init(QVariantMap *map)
 {
     ZDS_camera_parameter_List.resize(3);
     Camera_Live_List.resize(3);
@@ -91,7 +91,10 @@ void Connections::camera_init(QMap<QString, QString> *map)
     ZDS_camera_parameter_List[i]->SetPlcModbusRW(plcmodbusRW_);
     ZDS_camera_parameter_List[i]->Camera_Construction(Available_Cameras_->RegisteredCameraName.at(i));
     Camera_Live_List[i]->Set_Grabber_name_Live(ZDS_camera_parameter_List[i]->Camera_Get_Grabber());
-    ZDS_camera_parameter_List[i]->Camera_Trigger_Input_Delay_Address(map->value("Trigger_Input_Delay_Address_fl"+QString::number(i+1)).toInt(&ok,16));
+    // ZDS_camera_parameter_List[i]->Camera_Trigger_Input_Delay_Address(map->value("Trigger_Input_Delay_Address_fl"+QString::number(i+1)).toInt(&ok,16));
+    ZDS_camera_parameter_List[i]->Camera_Trigger_Input_Delay_Address(
+        map->value("Trigger_Input_Delay_Address_fl"+QString::number(i+1)).toString().toInt(&ok, 16)
+        );
     ZDS_camera_parameter_List[i]->Camera_Set_Delay(map->value("Delay_fl"+QString::number(i+1)).toInt());
     ZDS_camera_parameter_List[i]->Camera_Set_Exposure(map->value("Exposure_fl"+QString::number(i+1)).toInt());
     ZDS_camera_parameter_List[i]->Camera_Set_ROI(map->value("XOffset_fl"+QString::number(i+1)).toInt(),
@@ -109,7 +112,7 @@ void Connections::camera_init(QMap<QString, QString> *map)
 }
 }
 
-bool Connections::Machin_init(QMap<QString, QString> *map)
+bool Connections::Machin_init(QVariantMap *map)
 {
     plcmodbusRW_ =new plcmodbusRW(this,plcmodbusconnect_->getdevice());
     // plcmodbusRW_->WriteCoil(0x80e,true);
@@ -175,7 +178,7 @@ void Connections::CalibrationInit()
 
 }
 
-void Connections::IspectionUpdate(QMap<QString, QString> *samplemap,QMap<QString, QString> *machinmap,int station)
+void Connections::IspectionUpdate(QVariantMap *samplemap,QVariantMap *machinmap,int station)
 {
     if(station<2){
         FLInspection_List[station]->Set_Inspection_Param(samplemap->value("diamiter_max_fl"+QString::number(station+1)).toDouble(),samplemap->value("diamiter_min_fl"+QString::number(station+1)).toDouble());
@@ -190,7 +193,7 @@ void Connections::IspectionUpdate(QMap<QString, QString> *samplemap,QMap<QString
 }
 
 
-void Connections::CalibrationUpdate(QMap<QString, QString> *map,int station)
+void Connections::CalibrationUpdate(QVariantMap *map,int station)
 {
     FLCalibration_List[station]->Set_PIX_MM(map->value("pixel_to_mm_min_fl"+QString::number(station+1)).toDouble(),map->value("pixel_to_mm_max_fl"+QString::number(station+1)).toDouble());
 }

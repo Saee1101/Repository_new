@@ -11,7 +11,10 @@ CONFIG += c++17
 
 SOURCES += \
     Entities.cpp \
-    Repository.cpp
+    Repository.cpp \
+    machineSetting.cpp \
+    sample.cpp \
+    user.cpp
 
 HEADERS += \
     BaseEntity.h \

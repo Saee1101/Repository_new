@@ -1,22 +1,23 @@
 #ifndef BASEENTITY_H
 #define BASEENTITY_H
-
+#define DllImport   __declspec( dllimport )
 #include <QVariantMap>
 #include <QSqlQuery>
 #include <QSqlRecord>
-#include <QMetaObject>
 #include <QMetaProperty>
 #include <QDebug>
 
-class BaseEntity : public QObject
+class BaseEntity
 {
-     Q_OBJECT
+     Q_GADGET
 public:
-    virtual ~BaseEntity() {}
+    virtual ~BaseEntity() = default;
 
-    virtual QVariantMap toVariantMap() const = 0;
-    virtual void fromQuery(const QSqlQuery& query) = 0;
+   DllImport virtual QVariantMap toVariantMap() const = 0;
+
+   DllImport virtual void fromQueryAuto(const QSqlQuery& query) = 0;
 };
 
 #endif // BASEENTITY_H
+
 
